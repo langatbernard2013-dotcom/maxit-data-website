@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,14 +102,17 @@ footer{text-align:center;color:#777;padding:25px}
  margin:25px 0;
  box-shadow:0 5px 20px #0001;
 }
-input,select{
+input,select,textarea{
  width:100%;
  padding:15px;
  margin:10px 0;
  border:1px solid #ccd2dc;
  border-radius:10px;
  font-size:16px;
+ font-family:Arial,sans-serif;
 }
+textarea{min-height:100px;resize:vertical}
+label{display:block;margin-top:12px;font-weight:bold}
 .submit{
  width:100%;
  background:#f47720;
@@ -120,6 +124,22 @@ input,select{
  font-weight:bold;
 }
 .close{float:right;border:0;background:#eee;padding:8px}
+.payment-note{
+ background:#fff5ee;
+ border:1px solid #f5d9c7;
+ color:#b65a20;
+ padding:12px;
+ border-radius:10px;
+ line-height:1.5;
+ font-size:14px;
+ margin:15px 0;
+}
+.small-note{
+ font-size:12px;
+ color:#777;
+ line-height:1.5;
+ margin-top:2px;
+}
 </style>
 </head>
 <body>
@@ -170,22 +190,50 @@ input,select{
 </div>
 
 <div id="order">
-<button class="close" onclick="document.getElementById('order').style.display='none'">Close ✕</button>
+<button class="close" type="button"
+onclick="document.getElementById('order').style.display='none'">
+Close ✕
+</button>
+
 <h2>Complete Your Enquiry</h2>
 <p id="selected"></p>
 
+<div class="payment-note">
+<strong>Payment option: Orange Money Liberia</strong><br>
+Make your payment through Orange Money, then paste your payment confirmation SMS or payment link below.
+</div>
+
 <form action="https://formsubmit.co/YOUR_EMAIL" method="POST">
-<input type="hidden" name="_subject" value="New Data Plan Enquiry">
+
+<input type="hidden" name="_subject"
+value="New Maxit Liberia Data Plan Enquiry">
+
 <input type="hidden" name="Selected Plan" id="plan">
+
 <label>Customer phone number</label>
-<input type="tel" name="Phone Number" placeholder="Enter phone number" required>
-<label>Payment method</label>
-<select name="Payment Method">
-<option>Orange Money</option>
-</select>
-<label>Payment reference (after payment)</label>
-<input type="text" name="Payment Reference" placeholder="Enter transaction reference">
-<button class="submit" type="submit">Submit Enquiry</button>
+<input type="tel" name="Customer Phone Number"
+placeholder="Enter your phone number"
+autocomplete="tel" required>
+
+<label>Customer reference PIN</label>
+<input type="text" name="Customer Reference PIN"
+placeholder="Enter your customer reference PIN" required>
+
+<p class="small-note">
+Enter your customer/order reference only.
+Never enter your Orange Money wallet PIN,
+password, or one-time security code.
+</p>
+
+<label>Paste Orange Money payment SMS or payment link</label>
+<textarea name="Orange Money Payment SMS or Link"
+placeholder="Paste your Orange Money payment confirmation SMS or payment link here"
+required></textarea>
+
+<button class="submit" type="submit">
+Submit Enquiry
+</button>
+
 </form>
 </div>
 
@@ -193,6 +241,7 @@ input,select{
 Starlink to Cell Data Plans<br>
 Powered by Maxit Liberia
 </footer>
+
 </div>
 
 <script>
@@ -203,5 +252,6 @@ function order(plan,price){
  document.getElementById('order').scrollIntoView({behavior:'smooth'});
 }
 </script>
+
 </body>
 </html>
