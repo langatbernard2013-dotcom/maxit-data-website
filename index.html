@@ -4,167 +4,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maxit Data Plans</title>
+<title>Starlink Satellite Data | Powered by Maxit</title>
+
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:#f3f6fc;
+ background:#edf1f7;
  color:#172238;
 }
 header{
- background:#071d49;
+ background:#102b50;
  color:white;
- padding:20px 16px;
-}
-.head{
- max-width:1050px;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:12px;
-}
-.logo{font-size:24px;font-weight:bold}
-.logo span{color:#36aaff}
-.tag{font-size:12px;color:#cbd9f5;margin-top:5px}
-.header-right{
- background:#123c77;
- padding:10px 14px;
- border-radius:12px;
- font-size:12px;
  text-align:center;
+ padding:27px 15px;
 }
-.hero{
- background:linear-gradient(120deg,#071d49,#1265b5);
- color:white;
- padding:55px 20px;
+header h1{margin:0;font-size:25px}
+header p{margin:9px 0 0;color:#ff9c32;font-weight:bold}
+.container{
+ max-width:760px;
+ margin:22px auto;
+ padding:12px;
 }
-.hero-inner{max-width:1050px;margin:auto}
-.hero h1{font-size:36px;margin:0 0 14px}
-.hero h1 span{color:#52baff}
-.hero p{line-height:1.7;color:#e0edff;max-width:550px}
-.container{max-width:1050px;margin:auto;padding:25px 16px}
-.features{
+.intro{text-align:center;margin-bottom:22px}
+.packages{
  display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
- margin-top:-5px;
-}
-.feature{
- background:white;
- border-radius:12px;
- padding:17px 10px;
- text-align:center;
- box-shadow:0 3px 12px #142c4c12;
-}
-.feature strong{display:block;color:#0756a5;margin-bottom:5px}
-.feature small{color:#66758b}
-h2{font-size:23px;margin:32px 0 8px;color:#092b60}
-.subtitle{color:#6c7890;font-size:14px;margin-bottom:18px}
-.plans{
- display:grid;
- grid-template-columns:repeat(3,1fr);
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
  gap:15px;
 }
-.plan{
+.card{
  background:white;
- border:2px solid #e2eaf6;
- border-radius:14px;
- padding:22px 15px;
+ border-radius:13px;
+ padding:22px 16px;
  text-align:center;
- cursor:pointer;
- transition:.2s;
+ box-shadow:0 3px 12px #00000012;
 }
-.plan:hover,.plan.active{
- border-color:#0875d1;
- box-shadow:0 5px 18px #0875d122;
- transform:translateY(-2px);
+.card h2{font-size:19px;margin:5px}
+.price{
+ color:#102b50;
+ font-size:24px;
+ font-weight:bold;
+ margin:15px 0;
 }
-.plan .symbol{font-size:27px}
-.plan h3{margin:12px 0 7px;color:#092d63}
-.plan p{font-size:13px;color:#718097}
-.plan button{
- background:#0968bd;
- color:white;
+button{
  border:0;
- border-radius:8px;
- padding:11px 18px;
+ border-radius:7px;
+ padding:13px 18px;
+ font-size:15px;
  font-weight:bold;
  cursor:pointer;
 }
-.panel{
- background:white;
- border-radius:15px;
- padding:22px;
- margin-top:28px;
- box-shadow:0 4px 18px #102b5010;
-}
-label{
- display:block;
- font-weight:bold;
- font-size:13px;
- margin:15px 0 7px;
-}
-input,select,textarea{
+.view{
+ background:#ff941f;
+ color:white;
  width:100%;
- padding:13px;
- border:1px solid #d6deeb;
- border-radius:8px;
- font-size:15px;
- background:#fff;
-}
-textarea{min-height:85px;resize:vertical}
-.grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:14px;
 }
 .payment{
- background:#fff5ed;
- border:1px solid #ffcfaa;
- border-radius:12px;
- padding:17px;
+ display:none;
+ background:white;
+ padding:22px;
+ border-radius:13px;
+ margin-top:22px;
+ box-shadow:0 3px 12px #00000012;
+}
+.payment h2{text-align:center}
+.payment label{
+ display:block;
+ font-weight:bold;
+ margin:15px 0 7px;
+}
+.payment input,.payment textarea{
+ width:100%;
+ padding:13px;
+ border:1px solid #ccd3df;
+ border-radius:7px;
+ font-size:15px;
+}
+.orange{
+ background:#ff941f;
+ color:white;
+ padding:12px;
+ text-align:center;
+ border-radius:7px;
+ font-weight:bold;
+}
+.buy{
+ background:#102b50;
+ color:white;
+ width:100%;
  margin-top:18px;
 }
-.payment strong{color:#ed681d;font-size:18px}
-.payment p{font-size:13px;line-height:1.6;color:#65584f}
-.submit{
- width:100%;
- border:0;
- border-radius:9px;
- padding:16px;
- margin-top:20px;
- background:#0872ca;
- color:white;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
-}
-.notice{
- background:#edf6ff;
- padding:14px;
- border-radius:9px;
- font-size:13px;
- line-height:1.6;
- margin-top:15px;
-}
+.small{text-align:center;color:#68758a;font-size:13px}
 footer{
- background:#071d49;
- color:#d5e2f5;
  text-align:center;
- padding:25px 15px;
- margin-top:35px;
- font-size:13px;
- line-height:1.8;
-}
-@media(max-width:650px){
- .plans{grid-template-columns:repeat(2,1fr)}
- .features{grid-template-columns:1fr 1fr}
- .grid{grid-template-columns:1fr}
- .hero h1{font-size:29px}
- .logo{font-size:20px}
+ padding:25px;
+ color:#667085;
 }
 </style>
 </head>
@@ -172,169 +107,105 @@ footer{
 <body>
 
 <header>
- <div class="head">
-  <div>
-   <div class="logo">MAXIT <span>DATA</span></div>
-   <div class="tag">FAST • RELIABLE • AFFORDABLE</div>
-  </div>
-  <div class="header-right">
-   CONNECTED<br>ANYTIME
-  </div>
- </div>
+<h1>STARLINK SATELLITE DATA</h1>
+<p>POWERED BY MAXIT</p>
 </header>
-
-<section class="hero">
- <div class="hero-inner">
-  <h1>Stay Connected<br>With <span>Maxit Data</span></h1>
-  <p>Choose your preferred data package and submit your order easily. Fast, reliable and convenient service.</p>
- </div>
-</section>
 
 <div class="container">
 
-<div class="features">
- <div class="feature">
-  <strong>🌐 Internet Data</strong>
-  <small>Stay connected</small>
- </div>
- <div class="feature">
-  <strong>⚡ Fast Service</strong>
-  <small>Quick processing</small>
- </div>
- <div class="feature">
-  <strong>☎ Support</strong>
-  <small>Customer assistance</small>
- </div>
+<div class="intro">
+<h2>Choose Your Data Package</h2>
+<p>Select your preferred package to view details and purchase.</p>
 </div>
 
-<h2>Select Your Data Package</h2>
-<div class="subtitle">Click on your preferred package to continue.</div>
+<div class="packages">
 
-<div class="plans">
+<div class="card">
+<h2>5GB</h2>
+<div class="price">LRD 300</div>
+<button class="view" onclick="showDetails('5GB','LRD 300')">VIEW DETAILS</button>
+</div>
 
- <div class="plan" onclick="choosePlan('1 GB')">
-  <div class="symbol">📶</div>
-  <h3>1 GB</h3>
-  <p>Data Package</p>
-  <button>Select Plan</button>
- </div>
+<div class="card">
+<h2>Monthly Unlimited</h2>
+<div class="price">LRD 500</div>
+<button class="view" onclick="showDetails('Monthly Unlimited','LRD 500')">VIEW DETAILS</button>
+</div>
 
- <div class="plan" onclick="choosePlan('2 GB')">
-  <div class="symbol">📶</div>
-  <h3>2 GB</h3>
-  <p>Data Package</p>
-  <button>Select Plan</button>
- </div>
-
- <div class="plan" onclick="choosePlan('5 GB')">
-  <div class="symbol">🌐</div>
-  <h3>5 GB</h3>
-  <p>Data Package</p>
-  <button>Select Plan</button>
- </div>
-
- <div class="plan" onclick="choosePlan('10 GB')">
-  <div class="symbol">🚀</div>
-  <h3>10 GB</h3>
-  <p>Data Package</p>
-  <button>Select Plan</button>
- </div>
-
- <div class="plan" onclick="choosePlan('20 GB')">
-  <div class="symbol">⚡</div>
-  <h3>20 GB</h3>
-  <p>Data Package</p>
-  <button>Select Plan</button>
- </div>
-
- <div class="plan" onclick="choosePlan('Custom Package')">
-  <div class="symbol">📦</div>
-  <h3>Custom</h3>
-  <p>Any Amount</p>
-  <button>Select Plan</button>
- </div>
+<div class="card">
+<h2>5G Monthly Unlimited</h2>
+<div class="price">LRD 700</div>
+<button class="view" onclick="showDetails('5G Monthly Unlimited','LRD 700')">VIEW DETAILS</button>
+</div>
 
 </div>
 
-<div class="panel" id="order">
- <h2 style="margin-top:0">Customer Details</h2>
- <div class="subtitle">Complete the details below to place your request.</div>
+<div class="payment" id="payment">
+<h2>Package Purchase Details</h2>
 
- <form id="orderForm">
+<p><b>Selected package:</b> <span id="packageName"></span></p>
+<p><b>Package price:</b> <span id="packagePrice"></span></p>
 
-  <label>Selected Package</label>
-  <input id="package" name="package" placeholder="Select a package above" readonly required>
+<form id="orderForm">
 
-  <div class="grid">
-   <div>
-    <label>Customer Name</label>
-    <input id="customer" placeholder="Enter your name" required>
-   </div>
-   <div>
-    <label>Customer Phone Number</label>
-    <input id="phone" type="tel" placeholder="Enter phone number" required>
-   </div>
-  </div>
+<label>Customer Phone Number</label>
+<input type="tel" name="phone" placeholder="Enter your phone number" required>
 
-  <label>Reference PIN</label>
-  <input id="reference" placeholder="Enter transaction reference PIN" required>
+<label>Customer Reference PIN Number</label>
+<input type="text" name="pin" placeholder="Enter reference PIN" required>
 
-  <div class="payment">
-   <strong>🟠 ORANGE MONEY</strong>
-   <p>Payment option: Orange Money only.</p>
-   <p>After making your payment, copy the payment SMS link and paste it in the field below.</p>
-  </div>
+<label>Payment Option</label>
+<div class="orange">ORANGE MONEY</div>
 
-  <label>Orange Money Payment SMS Link</label>
-  <textarea id="smslink" placeholder="Paste your Orange Money payment SMS link here" required></textarea>
+<label>Orange Money Payment SMS / Transaction Link</label>
+<textarea name="payment_sms" rows="4" placeholder="Paste your Orange Money payment SMS or transaction link here" required></textarea>
 
-  <div class="notice">
-   Please verify your phone number, selected package and payment reference before submitting your request.
-   <br><br>
-   Never enter your Orange Money wallet PIN or password on this website.
-  </div>
+<button class="buy" type="submit">BUY NOW</button>
 
-  <button class="submit" type="submit">Submit Customer Request</button>
-
- </form>
+</form>
+<p class="small">Please confirm your payment details before submitting your order.</p>
 </div>
 
 </div>
 
 <footer>
- <strong>MAXIT DATA</strong><br>
- Fast • Reliable • Affordable<br>
- Your Connection, Our Priority
+STARLINK SATELLITE DATA<br>
+Powered by MAXIT
 </footer>
 
 <script>
-function choosePlan(name){
- document.getElementById('package').value=name;
- document.querySelectorAll('.plan').forEach(p=>p.classList.remove('active'));
- event.currentTarget.classList.add('active');
- document.getElementById('order').scrollIntoView({behavior:'smooth'});
+let selectedPackage = "";
+let selectedPrice = "";
+
+function showDetails(name,price){
+ selectedPackage=name;
+ selectedPrice=price;
+
+ document.getElementById("packageName").textContent=name;
+ document.getElementById("packagePrice").textContent=price;
+
+ document.getElementById("payment").style.display="block";
+ document.getElementById("payment").scrollIntoView({
+  behavior:"smooth"
+ });
 }
 
-document.getElementById('orderForm').addEventListener('submit',function(e){
+document.getElementById("orderForm").addEventListener("submit",function(e){
  e.preventDefault();
 
- const details =
- "MAXIT DATA CUSTOMER REQUEST\n"+
- "Package: "+document.getElementById('package').value+"\n"+
- "Customer: "+document.getElementById('customer').value+"\n"+
- "Phone: "+document.getElementById('phone').value+"\n"+
- "Reference PIN: "+document.getElementById('reference').value+"\n"+
- "Orange Money SMS Link: "+document.getElementById('smslink').value;
+ const data=new FormData(this);
 
- if(navigator.clipboard && navigator.clipboard.writeText){
-  navigator.clipboard.writeText(details).then(()=>{
-   alert("Request details copied. Please send them to Maxit Data for processing.");
-  }).catch(()=>{
-   alert("Please copy your request details manually.");
-  });
- }else{
-  alert("Please copy your request details manually.");
- }
+ const message=
+ "NEW STARLINK DATA ORDER\n"+
+ "Package: "+selectedPackage+"\n"+
+ "Price: "+selectedPrice+"\n"+
+ "Phone: "+data.get("phone")+"\n"+
+ "Reference PIN: "+data.get("pin")+"\n"+
+ "Payment: ORANGE MONEY\n"+
+ "Payment SMS/Link: "+data.get("payment_sms");
+
+ alert("Your order details have been prepared. An order receiving destination must be connected before orders can be sent.");
+
 });
 </script>
 
