@@ -1,256 +1,341 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starlink to Cell Data Plans</title>
+<title>Maxit Data Plans</title>
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:#edf1f7;
+ background:#f3f6fc;
  color:#172238;
 }
-.container{
- max-width:720px;
+header{
+ background:#071d49;
+ color:white;
+ padding:20px 16px;
+}
+.head{
+ max-width:1050px;
  margin:auto;
- background:#f8f9fc;
- padding:25px;
- min-height:100vh;
-}
-h1{font-size:30px;margin:0;font-weight:800}
-.orange{color:#f47720}
-.notice{
- margin-top:20px;
- border:1px solid #f5d9c7;
- background:#fff5ee;
- color:#b65a20;
- border-radius:30px;
- padding:12px;
- font-size:16px;
-}
-.brand{
- margin:26px 0 45px;
- background:white;
- padding:22px;
- border-radius:20px;
  display:flex;
  align-items:center;
- gap:14px;
- box-shadow:0 5px 15px #0001;
- width:max-content;
- max-width:100%;
+ justify-content:space-between;
+ gap:12px;
 }
-.logo{
- background:#ff6500;
- color:white;
- border-radius:15px;
- padding:16px 12px;
+.logo{font-size:24px;font-weight:bold}
+.logo span{color:#36aaff}
+.tag{font-size:12px;color:#cbd9f5;margin-top:5px}
+.header-right{
+ background:#123c77;
+ padding:10px 14px;
+ border-radius:12px;
+ font-size:12px;
  text-align:center;
- font-weight:bold;
- font-size:19px;
 }
-.brandname{font-size:25px;font-weight:bold;color:#f47720}
-.brand small{display:block;color:#777;font-size:16px}
-hr{border:0;border-top:1px solid #e2e5ed}
-.section{
- margin:40px 0 25px;
- color:#8794ae;
- font-weight:bold;
- letter-spacing:2px;
+.hero{
+ background:linear-gradient(120deg,#071d49,#1265b5);
+ color:white;
+ padding:55px 20px;
+}
+.hero-inner{max-width:1050px;margin:auto}
+.hero h1{font-size:36px;margin:0 0 14px}
+.hero h1 span{color:#52baff}
+.hero p{line-height:1.7;color:#e0edff;max-width:550px}
+.container{max-width:1050px;margin:auto;padding:25px 16px}
+.features{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+ margin-top:-5px;
+}
+.feature{
+ background:white;
+ border-radius:12px;
+ padding:17px 10px;
+ text-align:center;
+ box-shadow:0 3px 12px #142c4c12;
+}
+.feature strong{display:block;color:#0756a5;margin-bottom:5px}
+.feature small{color:#66758b}
+h2{font-size:23px;margin:32px 0 8px;color:#092b60}
+.subtitle{color:#6c7890;font-size:14px;margin-bottom:18px}
+.plans{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
 }
 .plan{
- min-height:275px;
- margin:20px 0;
- border-radius:28px;
- padding:32px;
- color:white;
- background:
- linear-gradient(90deg,rgba(5,18,48,.88),rgba(5,18,48,.55)),
- url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1000')
- center/cover;
- box-shadow:0 5px 12px #0002;
-}
-.tag{
- display:inline-block;
- background:#ffffff28;
- border:1px solid #ffffff44;
- padding:8px 17px;
- border-radius:25px;
- font-size:14px;
- font-weight:bold;
-}
-.plan h2{font-size:24px;margin:23px 0 5px}
-.duration{color:#c4cad7;font-size:18px}
-.price{font-size:32px;font-weight:bold;margin:16px 0}
-.free{color:#42d5a6}
-.details{
- background:none;border:0;color:#dce4f2;
- font-size:17px;font-weight:bold;
- padding:0;cursor:pointer;
-}
-button{cursor:pointer}
-footer{text-align:center;color:#777;padding:25px}
-#order{
- display:none;
  background:white;
- padding:24px;
- border-radius:20px;
- margin:25px 0;
- box-shadow:0 5px 20px #0001;
+ border:2px solid #e2eaf6;
+ border-radius:14px;
+ padding:22px 15px;
+ text-align:center;
+ cursor:pointer;
+ transition:.2s;
+}
+.plan:hover,.plan.active{
+ border-color:#0875d1;
+ box-shadow:0 5px 18px #0875d122;
+ transform:translateY(-2px);
+}
+.plan .symbol{font-size:27px}
+.plan h3{margin:12px 0 7px;color:#092d63}
+.plan p{font-size:13px;color:#718097}
+.plan button{
+ background:#0968bd;
+ color:white;
+ border:0;
+ border-radius:8px;
+ padding:11px 18px;
+ font-weight:bold;
+ cursor:pointer;
+}
+.panel{
+ background:white;
+ border-radius:15px;
+ padding:22px;
+ margin-top:28px;
+ box-shadow:0 4px 18px #102b5010;
+}
+label{
+ display:block;
+ font-weight:bold;
+ font-size:13px;
+ margin:15px 0 7px;
 }
 input,select,textarea{
  width:100%;
- padding:15px;
- margin:10px 0;
- border:1px solid #ccd2dc;
- border-radius:10px;
- font-size:16px;
- font-family:Arial,sans-serif;
+ padding:13px;
+ border:1px solid #d6deeb;
+ border-radius:8px;
+ font-size:15px;
+ background:#fff;
 }
-textarea{min-height:100px;resize:vertical}
-label{display:block;margin-top:12px;font-weight:bold}
+textarea{min-height:85px;resize:vertical}
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+}
+.payment{
+ background:#fff5ed;
+ border:1px solid #ffcfaa;
+ border-radius:12px;
+ padding:17px;
+ margin-top:18px;
+}
+.payment strong{color:#ed681d;font-size:18px}
+.payment p{font-size:13px;line-height:1.6;color:#65584f}
 .submit{
  width:100%;
- background:#f47720;
- color:white;
  border:0;
- border-radius:12px;
+ border-radius:9px;
  padding:16px;
- font-size:17px;
+ margin-top:20px;
+ background:#0872ca;
+ color:white;
+ font-size:16px;
  font-weight:bold;
+ cursor:pointer;
 }
-.close{float:right;border:0;background:#eee;padding:8px}
-.payment-note{
- background:#fff5ee;
- border:1px solid #f5d9c7;
- color:#b65a20;
- padding:12px;
- border-radius:10px;
- line-height:1.5;
- font-size:14px;
- margin:15px 0;
+.notice{
+ background:#edf6ff;
+ padding:14px;
+ border-radius:9px;
+ font-size:13px;
+ line-height:1.6;
+ margin-top:15px;
 }
-.small-note{
- font-size:12px;
- color:#777;
- line-height:1.5;
- margin-top:2px;
+footer{
+ background:#071d49;
+ color:#d5e2f5;
+ text-align:center;
+ padding:25px 15px;
+ margin-top:35px;
+ font-size:13px;
+ line-height:1.8;
+}
+@media(max-width:650px){
+ .plans{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:1fr 1fr}
+ .grid{grid-template-columns:1fr}
+ .hero h1{font-size:29px}
+ .logo{font-size:20px}
 }
 </style>
 </head>
+
 <body>
+
+<header>
+ <div class="head">
+  <div>
+   <div class="logo">MAXIT <span>DATA</span></div>
+   <div class="tag">FAST • RELIABLE • AFFORDABLE</div>
+  </div>
+  <div class="header-right">
+   CONNECTED<br>ANYTIME
+  </div>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <h1>Stay Connected<br>With <span>Maxit Data</span></h1>
+  <p>Choose your preferred data package and submit your order easily. Fast, reliable and convenient service.</p>
+ </div>
+</section>
+
 <div class="container">
 
-<h1>Starlink to Cell<br>
-<span class="orange">Data Plans</span></h1>
-
-<div class="notice">
-🟠 Fast, reliable satellite data — paid via Orange Money
+<div class="features">
+ <div class="feature">
+  <strong>🌐 Internet Data</strong>
+  <small>Stay connected</small>
+ </div>
+ <div class="feature">
+  <strong>⚡ Fast Service</strong>
+  <small>Quick processing</small>
+ </div>
+ <div class="feature">
+  <strong>☎ Support</strong>
+  <small>Customer assistance</small>
+ </div>
 </div>
 
-<div class="brand">
-<span style="font-size:23px">Powered by</span>
-<div class="logo">Max it<br><small style="color:white">LR</small></div>
-<div>
-<div class="brandname">Maxit</div>
-<small>Liberia</small>
-</div>
-</div>
+<h2>Select Your Data Package</h2>
+<div class="subtitle">Click on your preferred package to continue.</div>
 
-<hr>
+<div class="plans">
 
-<div class="section">CHOOSE YOUR PLAN</div>
+ <div class="plan" onclick="choosePlan('1 GB')">
+  <div class="symbol">📶</div>
+  <h3>1 GB</h3>
+  <p>Data Package</p>
+  <button>Select Plan</button>
+ </div>
 
-<div class="plan">
-<span class="tag" style="color:#42d5a6">NEW USERS ONLY</span>
-<h2>2.5GB Data</h2>
-<div class="duration">2-Day Plan</div>
-<div class="price free">Free trial</div>
-<button class="details" onclick="order('2.5GB Data','Free trial')">View details →</button>
-</div>
+ <div class="plan" onclick="choosePlan('2 GB')">
+  <div class="symbol">📶</div>
+  <h3>2 GB</h3>
+  <p>Data Package</p>
+  <button>Select Plan</button>
+ </div>
 
-<div class="plan">
-<span class="tag">LIGHT USERS</span>
-<h2>15GB Data</h2>
-<div class="duration">7-Day Plan</div>
-<div class="price">LRD 70</div>
-<button class="details" onclick="order('15GB Data','LRD 70')">View details →</button>
-</div>
+ <div class="plan" onclick="choosePlan('5 GB')">
+  <div class="symbol">🌐</div>
+  <h3>5 GB</h3>
+  <p>Data Package</p>
+  <button>Select Plan</button>
+ </div>
 
-<div class="plan">
-<span class="tag">BALANCED</span>
-<h2>35GB Data</h2>
-<div class="duration">14-Day Plan</div>
-<div class="price">LRD 250</div>
-<button class="details" onclick="order('35GB Data','LRD 250')">View details →</button>
-</div>
+ <div class="plan" onclick="choosePlan('10 GB')">
+  <div class="symbol">🚀</div>
+  <h3>10 GB</h3>
+  <p>Data Package</p>
+  <button>Select Plan</button>
+ </div>
 
-<div id="order">
-<button class="close" type="button"
-onclick="document.getElementById('order').style.display='none'">
-Close ✕
-</button>
+ <div class="plan" onclick="choosePlan('20 GB')">
+  <div class="symbol">⚡</div>
+  <h3>20 GB</h3>
+  <p>Data Package</p>
+  <button>Select Plan</button>
+ </div>
 
-<h2>Complete Your Enquiry</h2>
-<p id="selected"></p>
+ <div class="plan" onclick="choosePlan('Custom Package')">
+  <div class="symbol">📦</div>
+  <h3>Custom</h3>
+  <p>Any Amount</p>
+  <button>Select Plan</button>
+ </div>
 
-<div class="payment-note">
-<strong>Payment option: Orange Money Liberia</strong><br>
-Make your payment through Orange Money, then paste your payment confirmation SMS or payment link below.
 </div>
 
-<form action="https://formsubmit.co/YOUR_EMAIL" method="POST">
+<div class="panel" id="order">
+ <h2 style="margin-top:0">Customer Details</h2>
+ <div class="subtitle">Complete the details below to place your request.</div>
 
-<input type="hidden" name="_subject"
-value="New Maxit Liberia Data Plan Enquiry">
+ <form id="orderForm">
 
-<input type="hidden" name="Selected Plan" id="plan">
+  <label>Selected Package</label>
+  <input id="package" name="package" placeholder="Select a package above" readonly required>
 
-<label>Customer phone number</label>
-<input type="tel" name="Customer Phone Number"
-placeholder="Enter your phone number"
-autocomplete="tel" required>
+  <div class="grid">
+   <div>
+    <label>Customer Name</label>
+    <input id="customer" placeholder="Enter your name" required>
+   </div>
+   <div>
+    <label>Customer Phone Number</label>
+    <input id="phone" type="tel" placeholder="Enter phone number" required>
+   </div>
+  </div>
 
-<label>Customer reference PIN</label>
-<input type="text" name="Customer Reference PIN"
-placeholder="Enter your customer reference PIN" required>
+  <label>Reference PIN</label>
+  <input id="reference" placeholder="Enter transaction reference PIN" required>
 
-<p class="small-note">
-Enter your customer/order reference only.
-Never enter your Orange Money wallet PIN,
-password, or one-time security code.
-</p>
+  <div class="payment">
+   <strong>🟠 ORANGE MONEY</strong>
+   <p>Payment option: Orange Money only.</p>
+   <p>After making your payment, copy the payment SMS link and paste it in the field below.</p>
+  </div>
 
-<label>Paste Orange Money payment SMS or payment link</label>
-<textarea name="Orange Money Payment SMS or Link"
-placeholder="Paste your Orange Money payment confirmation SMS or payment link here"
-required></textarea>
+  <label>Orange Money Payment SMS Link</label>
+  <textarea id="smslink" placeholder="Paste your Orange Money payment SMS link here" required></textarea>
 
-<button class="submit" type="submit">
-Submit Enquiry
-</button>
+  <div class="notice">
+   Please verify your phone number, selected package and payment reference before submitting your request.
+   <br><br>
+   Never enter your Orange Money wallet PIN or password on this website.
+  </div>
 
-</form>
+  <button class="submit" type="submit">Submit Customer Request</button>
+
+ </form>
+</div>
+
 </div>
 
 <footer>
-Starlink to Cell Data Plans<br>
-Powered by Maxit Liberia
+ <strong>MAXIT DATA</strong><br>
+ Fast • Reliable • Affordable<br>
+ Your Connection, Our Priority
 </footer>
 
-</div>
-
 <script>
-function order(plan,price){
- document.getElementById('order').style.display='block';
- document.getElementById('selected').innerText=plan+' — '+price;
- document.getElementById('plan').value=plan+' — '+price;
+function choosePlan(name){
+ document.getElementById('package').value=name;
+ document.querySelectorAll('.plan').forEach(p=>p.classList.remove('active'));
+ event.currentTarget.classList.add('active');
  document.getElementById('order').scrollIntoView({behavior:'smooth'});
 }
+
+document.getElementById('orderForm').addEventListener('submit',function(e){
+ e.preventDefault();
+
+ const details =
+ "MAXIT DATA CUSTOMER REQUEST\n"+
+ "Package: "+document.getElementById('package').value+"\n"+
+ "Customer: "+document.getElementById('customer').value+"\n"+
+ "Phone: "+document.getElementById('phone').value+"\n"+
+ "Reference PIN: "+document.getElementById('reference').value+"\n"+
+ "Orange Money SMS Link: "+document.getElementById('smslink').value;
+
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(details).then(()=>{
+   alert("Request details copied. Please send them to Maxit Data for processing.");
+  }).catch(()=>{
+   alert("Please copy your request details manually.");
+  });
+ }else{
+  alert("Please copy your request details manually.");
+ }
+});
 </script>
 
 </body>
