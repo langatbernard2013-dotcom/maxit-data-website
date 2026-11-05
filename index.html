@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starlink to Cell Data Plans</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#edf1f7;
+ color:#172238;
+}
+.container{
+ max-width:720px;
+ margin:auto;
+ background:#f8f9fc;
+ padding:25px;
+ min-height:100vh;
+}
+h1{font-size:30px;margin:0;font-weight:800}
+.orange{color:#f47720}
+.notice{
+ margin-top:20px;
+ border:1px solid #f5d9c7;
+ background:#fff5ee;
+ color:#b65a20;
+ border-radius:30px;
+ padding:12px;
+ font-size:16px;
+}
+.brand{
+ margin:26px 0 45px;
+ background:white;
+ padding:22px;
+ border-radius:20px;
+ display:flex;
+ align-items:center;
+ gap:14px;
+ box-shadow:0 5px 15px #0001;
+ width:max-content;
+ max-width:100%;
+}
+.logo{
+ background:#ff6500;
+ color:white;
+ border-radius:15px;
+ padding:16px 12px;
+ text-align:center;
+ font-weight:bold;
+ font-size:19px;
+}
+.brandname{font-size:25px;font-weight:bold;color:#f47720}
+.brand small{display:block;color:#777;font-size:16px}
+hr{border:0;border-top:1px solid #e2e5ed}
+.section{
+ margin:40px 0 25px;
+ color:#8794ae;
+ font-weight:bold;
+ letter-spacing:2px;
+}
+.plan{
+ min-height:275px;
+ margin:20px 0;
+ border-radius:28px;
+ padding:32px;
+ color:white;
+ background:
+ linear-gradient(90deg,rgba(5,18,48,.88),rgba(5,18,48,.55)),
+ url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1000')
+ center/cover;
+ box-shadow:0 5px 12px #0002;
+}
+.tag{
+ display:inline-block;
+ background:#ffffff28;
+ border:1px solid #ffffff44;
+ padding:8px 17px;
+ border-radius:25px;
+ font-size:14px;
+ font-weight:bold;
+}
+.plan h2{font-size:24px;margin:23px 0 5px}
+.duration{color:#c4cad7;font-size:18px}
+.price{font-size:32px;font-weight:bold;margin:16px 0}
+.free{color:#42d5a6}
+.details{
+ background:none;border:0;color:#dce4f2;
+ font-size:17px;font-weight:bold;
+ padding:0;cursor:pointer;
+}
+button{cursor:pointer}
+footer{text-align:center;color:#777;padding:25px}
+#order{
+ display:none;
+ background:white;
+ padding:24px;
+ border-radius:20px;
+ margin:25px 0;
+ box-shadow:0 5px 20px #0001;
+}
+input,select{
+ width:100%;
+ padding:15px;
+ margin:10px 0;
+ border:1px solid #ccd2dc;
+ border-radius:10px;
+ font-size:16px;
+}
+.submit{
+ width:100%;
+ background:#f47720;
+ color:white;
+ border:0;
+ border-radius:12px;
+ padding:16px;
+ font-size:17px;
+ font-weight:bold;
+}
+.close{float:right;border:0;background:#eee;padding:8px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Starlink to Cell<br>
+<span class="orange">Data Plans</span></h1>
+
+<div class="notice">
+🟠 Fast, reliable satellite data — paid via Orange Money
+</div>
+
+<div class="brand">
+<span style="font-size:23px">Powered by</span>
+<div class="logo">Max it<br><small style="color:white">LR</small></div>
+<div>
+<div class="brandname">Maxit</div>
+<small>Liberia</small>
+</div>
+</div>
+
+<hr>
+
+<div class="section">CHOOSE YOUR PLAN</div>
+
+<div class="plan">
+<span class="tag" style="color:#42d5a6">NEW USERS ONLY</span>
+<h2>2.5GB Data</h2>
+<div class="duration">2-Day Plan</div>
+<div class="price free">Free trial</div>
+<button class="details" onclick="order('2.5GB Data','Free trial')">View details →</button>
+</div>
+
+<div class="plan">
+<span class="tag">LIGHT USERS</span>
+<h2>15GB Data</h2>
+<div class="duration">7-Day Plan</div>
+<div class="price">LRD 70</div>
+<button class="details" onclick="order('15GB Data','LRD 70')">View details →</button>
+</div>
+
+<div class="plan">
+<span class="tag">BALANCED</span>
+<h2>35GB Data</h2>
+<div class="duration">14-Day Plan</div>
+<div class="price">LRD 250</div>
+<button class="details" onclick="order('35GB Data','LRD 250')">View details →</button>
+</div>
+
+<div id="order">
+<button class="close" onclick="document.getElementById('order').style.display='none'">Close ✕</button>
+<h2>Complete Your Enquiry</h2>
+<p id="selected"></p>
+
+<form action="https://formsubmit.co/YOUR_EMAIL" method="POST">
+<input type="hidden" name="_subject" value="New Data Plan Enquiry">
+<input type="hidden" name="Selected Plan" id="plan">
+<label>Customer phone number</label>
+<input type="tel" name="Phone Number" placeholder="Enter phone number" required>
+<label>Payment method</label>
+<select name="Payment Method">
+<option>Orange Money</option>
+</select>
+<label>Payment reference (after payment)</label>
+<input type="text" name="Payment Reference" placeholder="Enter transaction reference">
+<button class="submit" type="submit">Submit Enquiry</button>
+</form>
+</div>
+
+<footer>
+Starlink to Cell Data Plans<br>
+Powered by Maxit Liberia
+</footer>
+</div>
+
+<script>
+function order(plan,price){
+ document.getElementById('order').style.display='block';
+ document.getElementById('selected').innerText=plan+' — '+price;
+ document.getElementById('plan').value=plan+' — '+price;
+ document.getElementById('order').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
