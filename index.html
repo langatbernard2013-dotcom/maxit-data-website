@@ -95,7 +95,16 @@ button{
  width:100%;
  margin-top:18px;
 }
+.buy:disabled{
+ opacity:.6;
+ cursor:not-allowed;
+}
 .small{text-align:center;color:#68758a;font-size:13px}
+#status{
+ margin-top:15px;
+ text-align:center;
+ font-weight:bold;
+}
 footer{
  text-align:center;
  padding:25px;
@@ -149,21 +158,32 @@ footer{
 <form id="orderForm">
 
 <label>Customer Phone Number</label>
-<input type="tel" name="phone" placeholder="Enter your phone number" required>
+<input type="tel" name="phone"
+placeholder="Enter your phone number" required>
 
 <label>Customer Reference PIN Number</label>
-<input type="text" name="pin" placeholder="Enter reference PIN" required>
+<input type="text" name="pin"
+placeholder="Enter reference PIN" required>
 
 <label>Payment Option</label>
 <div class="orange">ORANGE MONEY</div>
 
 <label>Orange Money Payment SMS / Transaction Link</label>
-<textarea name="payment_sms" rows="4" placeholder="Paste your Orange Money payment SMS or transaction link here" required></textarea>
+<textarea name="payment_sms" rows="4"
+placeholder="Paste your Orange Money payment SMS or transaction link here"
+required></textarea>
 
-<button class="buy" type="submit">BUY NOW</button>
+<button class="buy" id="buyButton" type="submit">
+BUY NOW
+</button>
 
 </form>
-<p class="small">Please confirm your payment details before submitting your order.</p>
+
+<div id="status"></div>
+
+<p class="small">
+Please confirm your payment details before submitting your order.
+</p>
 </div>
 
 </div>
@@ -185,26 +205,70 @@ function showDetails(name,price){
  document.getElementById("packagePrice").textContent=price;
 
  document.getElementById("payment").style.display="block";
+ document.getElementById("status").textContent="";
+
  document.getElementById("payment").scrollIntoView({
   behavior:"smooth"
  });
 }
 
-document.getElementById("orderForm").addEventListener("submit",function(e){
+document.getElementById("orderForm").addEventListener("submit",async function(e){
+
  e.preventDefault();
 
- const data=new FormData(this);
+ const form=this;
+ const button=document.getElementById("buyButton");
+ const status=document.getElementById("status");
 
- const message=
- "NEW STARLINK DATA ORDER\n"+
- "Package: "+selectedPackage+"\n"+
- "Price: "+selectedPrice+"\n"+
- "Phone: "+data.get("phone")+"\n"+
- "Reference PIN: "+data.get("pin")+"\n"+
- "Payment: ORANGE MONEY\n"+
- "Payment SMS/Link: "+data.get("payment_sms");
+ const data=new FormData(form);
 
- alert("Your order details have been prepared. An order receiving destination must be connected before orders can be sent.");
+ const order={
+  customerNumber:data.get("phone").trim(),
+  referencePin:data.get("pin").trim(),
+  smsLink:data.get("payment_sms").trim()
+ };
+
+ if(!selectedPackage){
+  status.textContent="Please select a package first.";
+  return;
+ }
+
+ button.disabled=true;
+ button.textContent="SENDING ORDER...";
+ status.textContent="Submitting your purchase...";
+
+ try{
+
+  const response=await fetch("/api/order",{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify(order)
+  });
+
+  const result=await response.json();
+
+  if(!response.ok || !result.success){
+   throw new Error(result.error || "Order could not be sent.");
+  }
+
+  status.style.color="green";
+  status.textContent="Your order has been submitted successfully!";
+
+  form.reset();
+
+ }catch(error){
+
+  status.style.color="red";
+  status.textContent="Order not sent. Please try again.";
+
+ }finally{
+
+  button.disabled=false;
+  button.textContent="BUY NOW";
+
+ }
 
 });
 </script>
