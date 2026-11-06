@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Money Checkout | Maxit</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#edf1f7;font-family:Arial;color:#172238}
+header{background:#102b50;color:white;text-align:center;padding:25px}
+header h2{margin:0}
+.container{max-width:500px;margin:25px auto;padding:15px}
+.card{background:white;padding:23px;border-radius:13px;box-shadow:0 3px 12px #0001}
+.package{background:#f2f5fa;padding:15px;border-radius:8px;margin:15px 0}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input{width:100%;padding:13px;border:1px solid #ccd3df;border-radius:7px;font-size:15px}
+.orange{background:#ff941f;color:white;text-align:center;padding:13px;border-radius:7px;font-weight:bold}
+button{width:100%;padding:14px;background:#102b50;color:white;border:0;border-radius:7px;font-size:16px;font-weight:bold;margin-top:20px}
+#status{text-align:center;margin-top:15px}
+.small{text-align:center;color:#68758a;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h2>ORANGE MONEY CHECKOUT</h2>
+<p>STARLINK SATELLITE DATA | MAXIT</p>
+</header>
+
+<div class="container">
+<div class="card">
+<h3>Confirm Your Package</h3>
+
+<div class="package">
+<p><b>Package:</b> <span id="plan"></span></p>
+<p><b>Price:</b> LRD <span id="price"></span></p>
+</div>
+
+<label>Payment option</label>
+<div class="orange">ORANGE MONEY</div>
+
+<form id="orderForm">
+<label>Your phone number</label>
+<input id="phone" type="tel" required placeholder="Enter phone number">
+
+<label>Transaction reference (if available)</label>
+<input id="reference" type="text" placeholder="Enter transaction reference">
+
+<button id="submit" type="submit">SUBMIT ORDER</button>
+</form>
+
+<div id="status"></div>
+<p class="small">Never enter your Orange Money PIN or OTP on this website.</p>
+</div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const plan = params.get("plan") || "";
+const price = params.get("price") || "";
+
+document.getElementById("plan").textContent = plan;
+document.getElementById("price").textContent = price;
+
+document.getElementById("orderForm").addEventListener("submit", async function(e) {
+ e.preventDefault();
+
+ const button = document.getElementById("submit");
+ const status = document.getElementById("status");
+
+ if (!plan || !price) {
+   status.textContent = "Invalid package. Return to the home page.";
+   return;
+ }
+
+ button.disabled = true;
+ button.textContent = "SENDING...";
+
+ try {
+   const response = await fetch("/api/order", {
+     method: "POST",
+     headers: {"Content-Type": "application/json"},
+     body: JSON.stringify({
+       plan,
+       price: "LRD " + price,
+       phone: document.getElementById("phone").value.trim(),
+       reference: document.getElementById("reference").value.trim()
+     })
+   });
+
+   const result = await response.json();
+
+   if (!response.ok || !result.success) {
+     throw new Error(result.error || "Submission failed");
+   }
+
+   status.style.color = "green";
+   status.textContent = "Order submitted successfully!";
+   this.reset();
+
+ } catch(error) {
+   status.style.color = "red";
+   status.textContent = "Order failed. Please try again.";
+ } finally {
+   button.disabled = false;
+   button.textContent = "SUBMIT ORDER";
+ }
+});
+</script>
+</body>
+</html>
