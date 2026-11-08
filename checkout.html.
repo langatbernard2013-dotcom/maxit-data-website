@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orange Money Checkout | Maxit</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#edf1f7;
+ color:#172238;
+}
+
+header{
+ background:#102b50;
+ color:white;
+ text-align:center;
+ padding:25px 12px;
+}
+
+header h1{margin:0;font-size:23px}
+header p{color:#ff9c32;font-weight:bold}
+
+.container{
+ max-width:500px;
+ margin:30px auto;
+ padding:15px;
+}
+
+.checkout{
+ background:white;
+ padding:25px 20px;
+ border-radius:14px;
+ box-shadow:0 4px 15px #00000012;
+}
+
+.checkout h2{
+ color:#102b50;
+ text-align:center;
+}
+
+.package{
+ background:#edf1f7;
+ padding:18px;
+ border-radius:10px;
+ text-align:center;
+ margin:20px 0;
+}
+
+.package h3{margin:0;color:#102b50}
+.price{
+ font-size:27px;
+ font-weight:bold;
+ color:#102b50;
+ margin-top:12px;
+}
+
+label{
+ display:block;
+ font-weight:bold;
+ margin:17px 0 8px;
+}
+
+input{
+ width:100%;
+ padding:14px;
+ border:1px solid #ccd4df;
+ border-radius:7px;
+ font-size:16px;
+}
+
+.instructions{
+ background:#fff4e5;
+ border-left:4px solid #ff941f;
+ padding:14px;
+ margin-top:20px;
+ line-height:1.6;
+ font-size:14px;
+}
+
+button{
+ width:100%;
+ border:0;
+ background:#ff941f;
+ color:white;
+ padding:15px;
+ border-radius:8px;
+ font-size:16px;
+ font-weight:bold;
+ margin-top:20px;
+ cursor:pointer;
+}
+
+.back{
+ display:block;
+ text-align:center;
+ margin-top:18px;
+ color:#102b50;
+ text-decoration:none;
+}
+
+.note{
+ font-size:12px;
+ color:#667085;
+ text-align:center;
+ margin-top:18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>STARLINK SATELLITE DATA</h1>
+<p>POWERED BY MAXIT</p>
+</header>
+
+<div class="container">
+<div class="checkout">
+
+<h2>Package Checkout</h2>
+
+<div class="package">
+<h3 id="plan">Selected Package</h3>
+<div class="price" id="price">LRD 0</div>
+</div>
+
+<form id="checkoutForm">
+
+<label for="phone">Orange Money Phone Number</label>
+<input
+ type="tel"
+ id="phone"
+ placeholder="Enter your Orange Money number"
+ required
+>
+
+<div class="instructions">
+<strong>Orange Money Payment</strong><br><br>
+1. Open your Orange Money service.<br>
+2. Follow the payment instructions for your selected package.<br>
+3. Keep your payment confirmation SMS for verification.<br>
+4. Contact Maxit support if you need assistance.
+</div>
+
+<label for="reference">Payment Reference / Transaction ID</label>
+<input
+ type="text"
+ id="reference"
+ placeholder="Enter payment reference"
+ required
+>
+
+<button type="submit">SUBMIT DETAILS</button>
+
+</form>
+
+<a class="back" href="index.html">← Back to Packages</a>
+
+<p class="note">
+Your details will need to be verified before your package is activated.
+</p>
+
+</div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const plan = params.get("plan") || "Selected Package";
+const price = params.get("price") || "0";
+
+document.getElementById("plan").textContent = plan;
+document.getElementById("price").textContent =
+ Number(price) === 0 ? "FREE" : "LRD " + price;
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ alert("Your details have been entered. Payment verification and submission are not yet connected.");
+});
+</script>
+
+</body>
+</html>
